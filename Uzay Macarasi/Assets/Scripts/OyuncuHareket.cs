@@ -18,6 +18,14 @@ public class OyuncuHareket : MonoBehaviour
     [SerializeField]
     float yavaslama = default;
 
+    [SerializeField]
+    float ziplamaGucu = default;
+
+    [SerializeField]
+    int ZiplamaLimiti = 3;
+
+    int ZiplamaSayisi;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,5 +62,43 @@ public class OyuncuHareket : MonoBehaviour
 
         transform.localScale = scale;
         transform.Translate(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown("space"))
+        {
+            ZiplamayiBaslat();
+
+        }
+
+         if(Input.GetKeyUp("space"))
+        {
+            ZiplamayiDurdur();
+
+        }
     }
+
+    void ZiplamayiBaslat()
+    {
+        if(ZiplamaSayisi < ZiplamaLimiti)
+        {
+            rb2d.AddForce(new Vector2(0, ziplamaGucu), ForceMode2D.Impulse);
+            animator.SetBool("Jump", true);
+
+        }
+      
+    }
+
+    void ZiplamayiDurdur()
+    {
+        
+        animator.SetBool("Jump", false);
+        ZiplamaSayisi++;
+
+    }
+
+    public void ZiplamayiSifirla()
+    {
+        ZiplamaSayisi = 0;
+       
+    }
+
 }

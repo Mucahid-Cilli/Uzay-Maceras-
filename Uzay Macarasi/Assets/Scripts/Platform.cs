@@ -54,4 +54,15 @@ public class Platform : MonoBehaviour
             transform.position = pingPong;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Ayaklar")
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.parent = transform;
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OyuncuHareket>().ZiplamayiSifirla();
+
+        }
+       
+    }
 }

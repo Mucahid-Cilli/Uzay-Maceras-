@@ -6,10 +6,17 @@ public class PlatformPool : MonoBehaviour
 {
     [SerializeField]
     GameObject PlatformPrafab = default;
+
+    [SerializeField]
+    GameObject olumculPlatformPrafab = default;
+
+    [SerializeField]
+    GameObject PlayerPrafab = default;
     
     List<GameObject> platforms = new List<GameObject>();
 
     Vector2 platformPozisyon;
+    Vector2 playerPozisyon;
 
     [SerializeField]
      float platformArasiMesafe = default;
@@ -25,7 +32,7 @@ public class PlatformPool : MonoBehaviour
     {
         if (platforms[platforms.Count -1].transform.position.y < Camera.main.transform.position.y + EkranHesaplayicisi.instance.Yukseklik)
         {
-            Debug.Log("Platform Yerlestir");
+            PlatformYerlestir();
 
         }
     }
@@ -33,7 +40,16 @@ public class PlatformPool : MonoBehaviour
     void PlatformUret()
     {
         platformPozisyon = new Vector2(0, 0);
-        for (int i = 0; i < 10; i++)
+        playerPozisyon = new Vector2(0, 0.5f);
+
+        GameObject player = Instantiate(PlayerPrafab, playerPozisyon, Quaternion.identity);
+        GameObject ilkPlatform = Instantiate(PlatformPrafab, platformPozisyon, Quaternion.identity);
+
+        platforms.Add(ilkPlatform);
+        SonrakiPlatformPozisyon();
+        ilkPlatform.GetComponent<Platform>().Hareket = true;
+
+        for (int i = 0; i < 8; i++)
         {
             GameObject platform = Instantiate(PlatformPrafab, platformPozisyon, Quaternion.identity);
             platforms.Add(platform);
@@ -41,6 +57,27 @@ public class PlatformPool : MonoBehaviour
             SonrakiPlatformPozisyon();
 
         }
+
+        GameObject olumculPlatform = Instantiate(olumculPlatformPrafab, platformPozisyon, Quaternion.identity);
+        olumculPlatform.GetComponent<OlumculPlatform>().Hareket = true;
+        platforms.Add(olumculPlatform);
+        SonrakiPlatformPozisyon();
+
+    }
+
+    void PlatformYerlestir()
+    {
+        for (int i = 0; i < 5; i++)  
+        {
+            GameObject temp;
+            temp = platforms[i + 5];
+            platforms [i + 5] = platforms[i];
+            platforms[i] = temp;
+            platforms[i + 5].transform.position = platformPozisyon;
+            SonrakiPlatformPozisyon();
+
+        }
+       
     }
 
     void SonrakiPlatformPozisyon()
