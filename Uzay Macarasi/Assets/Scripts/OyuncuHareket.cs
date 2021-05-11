@@ -26,17 +26,32 @@ public class OyuncuHareket : MonoBehaviour
 
     int ZiplamaSayisi;
 
+    Joystick joystick;
+
+    JoystickButon joyistickButon;
+
+    bool zipliyor;
+
     // Start is called before the first frame update
     void Start()
     {
+        joyistickButon = FindObjectOfType<JoystickButon>();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        joystick = FindObjectOfType<Joystick>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        KlavyeKontrol();
+#if UNITY_EDITOR
+       KlavyeKontrol();       
+#else
+       JoystickKontrol();     
+#endif
+
+        
+        
     }
 
     void KlavyeKontrol()
@@ -76,6 +91,46 @@ public class OyuncuHareket : MonoBehaviour
         }
     }
 
+    void JoystickKontrol()
+    {
+        float hareketInput = joystick.Horizontal;
+        Vector2 scale = transform.localScale;
+
+        if(hareketInput > 0)
+        {
+            velocity.x = Mathf.MoveTowards(velocity.x, hareketInput * hiz, hizlanma * Time.deltaTime);
+            animator.SetBool("Walk", true);
+            scale.x = 0.3f;
+        } else if(hareketInput < 0)
+        {
+            velocity.x = Mathf.MoveTowards(velocity.x, hareketInput * hiz, hizlanma * Time.deltaTime);
+            animator.SetBool("Walk", true);
+            scale.x = -0.3f;
+        } else
+        {
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, yavaslama * Time.deltaTime);
+            animator.SetBool("Walk", false);
+        }
+
+        transform.localScale = scale;
+        transform.Translate(velocity * Time.deltaTime);
+
+        if(joyistickButon.tusaBasildi == true && zipliyor == false)
+        {
+            zipliyor = true;
+            ZiplamayiBaslat();
+        }
+ 
+        if(joyistickButon.tusaBasildi == false && zipliyor == true)
+        {
+            zipliyor = false;
+            ZiplamayiDurdur();
+        }
+
+
+    }
+
+
     void ZiplamayiBaslat()
     {
         if(ZiplamaSayisi < ZiplamaLimiti)
@@ -99,6 +154,16 @@ public class OyuncuHareket : MonoBehaviour
     {
         ZiplamaSayisi = 0;
        
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Olum")
+        {
+            FindObjectOfType<OyunKontrol>().OyunuBitir();
+
+        }
+        
     }
 
 }

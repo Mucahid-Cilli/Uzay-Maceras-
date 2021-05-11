@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ayaklar
+  - Platform
+  - OlumculPlatform
+  - Olum
   layers:
   - Default
   - TransparentFX
@@ -45,6 +48,12 @@ TagManager:
   - name: Platform
     uniqueID: 2636261761
     locked: 0
+  - name: Altin
+    uniqueID: 833360307
+    locked: 0
   - name: Player
     uniqueID: 3345429493
+    locked: 0
+  - name: UI
+    uniqueID: 3757475855
     locked: 0
