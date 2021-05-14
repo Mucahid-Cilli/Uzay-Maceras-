@@ -137,6 +137,7 @@ public class OyuncuHareket : MonoBehaviour
         {
             rb2d.AddForce(new Vector2(0, ziplamaGucu), ForceMode2D.Impulse);
             animator.SetBool("Jump", true);
+            FindObjectOfType<SliderKontrol>().SliderDeger(ZiplamaLimiti, ZiplamaSayisi);
 
         }
       
@@ -147,12 +148,14 @@ public class OyuncuHareket : MonoBehaviour
         
         animator.SetBool("Jump", false);
         ZiplamaSayisi++;
+        FindObjectOfType<SliderKontrol>().SliderDeger(ZiplamaLimiti, ZiplamaSayisi);
 
     }
 
     public void ZiplamayiSifirla()
     {
         ZiplamaSayisi = 0;
+        FindObjectOfType<SliderKontrol>().SliderDeger(ZiplamaLimiti, ZiplamaSayisi);
        
     }
 

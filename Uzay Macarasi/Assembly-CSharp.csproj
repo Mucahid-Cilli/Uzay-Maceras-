@@ -36,30 +36,32 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
      <Compile Include="Assets\Scripts\KameraHareket.cs" />
      <Compile Include="Assets\Scripts\AyarlarKontrol.cs" />
+     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
+     <Compile Include="Assets\Scripts\OyunKontrol.cs" />
+     <Compile Include="Assets\Scripts\AltinAlgilayici.cs" />
      <Compile Include="Assets\Scripts\EkranHesaplayicisi.cs" />
+     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
      <Compile Include="Assets\Scripts\ArkaPlanHareketKontrol.cs" />
      <Compile Include="Assets\Scripts\MenuKontrol.cs" />
+     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
+     <Compile Include="Assets\Scripts\Altin.cs" />
+     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Scripts\TamEkran.cs" />
      <Compile Include="Assets\Scripts\OlumculPlatform.cs" />
+     <Compile Include="Assets\Scripts\JoystickButon.cs" />
+     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
+     <Compile Include="Assets\Scripts\Puan.cs" />
+     <Compile Include="Assets\Scripts\EkrandaTut.cs" />
      <Compile Include="Assets\Scripts\PuanKontrol.cs" />
      <Compile Include="Assets\Scripts\OyuncuHareket.cs" />
      <Compile Include="Assets\Scripts\PlatformPool.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
-     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
-     <Compile Include="Assets\Scripts\JoystickButon.cs" />
-     <Compile Include="Assets\Scripts\Puan.cs" />
-     <Compile Include="Assets\Scripts\AltinAlgilayici.cs" />
-     <Compile Include="Assets\Scripts\Altin.cs" />
-     <Compile Include="Assets\Scripts\EkrandaTut.cs" />
-     <Compile Include="Assets\Scripts\OyunKontrol.cs" />
+     <Compile Include="Assets\Scripts\SliderKontrol.cs" />
+     <Compile Include="Assets\Scripts\Scenekler.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

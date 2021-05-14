@@ -17,7 +17,10 @@ public class MenuKontrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(Scenekler.KayitVarmi() == false)
+        {
+            Scenekler.NormalDegerAta(1);
+        }
     }
 
     // Update is called once per frame

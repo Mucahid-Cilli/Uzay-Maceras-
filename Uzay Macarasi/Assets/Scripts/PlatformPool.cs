@@ -44,6 +44,7 @@ public class PlatformPool : MonoBehaviour
 
         GameObject player = Instantiate(PlayerPrafab, playerPozisyon, Quaternion.identity);
         GameObject ilkPlatform = Instantiate(PlatformPrafab, platformPozisyon, Quaternion.identity);
+        player.transform.parent = ilkPlatform.transform;
 
         platforms.Add(ilkPlatform);
         SonrakiPlatformPozisyon();
